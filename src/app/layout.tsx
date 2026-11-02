@@ -6,6 +6,7 @@ import "./globals.css";
 import BootstrapJs from "@/components/bootstrap-js/bootstrapjs";
 import { ToasterContainer } from "@/components/Toaster";
 import Header from "@/core/comman/header";
+import Footer from "@/core/comman/footer";
 
 
 const poppins = Poppins({
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-vh-100 d-flex flex-column">
         <Header />
         <main className="flex-grow-1">{children}</main>
+        <Footer />
         <ToasterContainer />
         <BootstrapJs />
       </body>

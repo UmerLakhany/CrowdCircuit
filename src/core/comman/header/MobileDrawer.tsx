@@ -43,7 +43,7 @@ export default function MobileDrawer({ open, onClose, isActive }: Props) {
         inert={!open}
       >
         <div className="offcanvas-header border-bottom justify-content-between gap-3">
-          <Logo height={32} />
+          <Logo height={40} />
           <button
             type="button"
             className="btn btn-outline-cc rounded-circle cc-icon-btn"

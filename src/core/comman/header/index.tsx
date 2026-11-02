@@ -33,7 +33,7 @@ export default function Header() {
         }`}
       >
         <div className="container h-100 d-flex align-items-center justify-content-between gap-3">
-          <Logo height={40} />
+          <Logo height={52} className="cc-header-logo" />
 
           {/* Desktop navigation */}
           <nav className="d-none d-xl-block" aria-label="Main navigation">
