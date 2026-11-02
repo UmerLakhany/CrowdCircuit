@@ -1,8 +1,246 @@
-@import "tailwindcss";
+/* ===== CrowdCircuit theme (colors taken from logo) =====
+   Selectors use html[data-bs-theme="dark"] so they always beat
+   Bootstrap's own [data-bs-theme=dark] variables. */
+:root,
+html[data-bs-theme="dark"] {
+  --cc-bg: #01020c;
+  --cc-bg-soft: #070918;
+  --cc-surface: #0e1126;
+  --cc-surface-hover: #151936;
+  --cc-border: rgba(255, 255, 255, 0.08);
 
-*,
-html,
-body {
+  --cc-primary: #8527fb;
+  --cc-secondary: #13affb;
+  --cc-gradient: linear-gradient(90deg, #8527fb 0%, #13affb 100%);
+
+  --cc-text: #ffffff;
+  --cc-text-muted: #9ca3c4;
+
+  --cc-radius: 12px;
+  --cc-header-height: 76px;
+
+  /* Bootstrap overrides */
+  --bs-body-bg: var(--cc-bg);
+  --bs-body-bg-rgb: 1, 2, 12;
+  --bs-body-color: var(--cc-text);
+  --bs-body-font-family: var(--font-poppins), system-ui, sans-serif;
+  --bs-primary: #8527fb;
+  --bs-primary-rgb: 133, 39, 251;
+  --bs-link-color: #13affb;
+  --bs-link-color-rgb: 19, 175, 251;
+  --bs-link-hover-color: #8527fb;
+  --bs-link-hover-color-rgb: 133, 39, 251;
+  --bs-border-color: var(--cc-border);
+  --bs-secondary-color: var(--cc-text-muted);
+  --bs-tertiary-bg: var(--cc-surface);
+}
+
+html body {
   margin: 0;
   padding: 0;
+  background: var(--cc-bg);
+  color: var(--cc-text);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: var(--cc-text);
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(133, 39, 251, 0.45);
+  color: #fff;
+}
+
+/* ===== Reusable theme helpers ===== */
+.text-gradient {
+  background: var(--cc-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-muted-cc {
+  color: var(--cc-text-muted) !important;
+}
+
+.btn-gradient {
+  background: var(--cc-gradient);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-gradient:hover,
+.btn-gradient:focus-visible {
+  color: #fff;
+  opacity: 0.95;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(133, 39, 251, 0.35);
+}
+
+.btn-outline-cc {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-outline-cc:hover,
+.btn-outline-cc:focus-visible {
+  color: #fff;
+  border-color: var(--cc-primary);
+  background: rgba(133, 39, 251, 0.12);
+}
+
+.btn-outline-cc.active {
+  color: #fff;
+  border-color: var(--cc-primary);
+  background: rgba(133, 39, 251, 0.18);
+}
+
+/* Round icon button: use with "btn btn-outline-cc rounded-circle" */
+.cc-icon-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ===== Header ===== */
+.cc-header {
+  height: var(--cc-header-height);
+  background: var(--cc-bg);
+  transition: box-shadow 0.25s, background 0.25s;
+}
+
+.cc-header.is-scrolled {
+  background: rgba(1, 2, 12, 0.92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 575.98px) {
+  .cc-header {
+    height: 66px;
+  }
+}
+
+.cc-nav-link {
+  position: relative;
+  color: var(--cc-text-muted);
+  font-size: 0.93rem;
+  font-weight: 500;
+}
+
+.cc-nav-link:hover,
+.cc-nav-link:focus,
+.cc-nav-link.active {
+  color: #fff;
+}
+
+/* Gradient underline on active link */
+.cc-nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: var(--bs-nav-link-padding-x);
+  right: var(--bs-nav-link-padding-x);
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--cc-gradient);
+}
+
+/* ===== Header search panel ===== */
+.cc-search-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(1, 2, 12, 0.96);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+
+.cc-search-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.cc-search-form {
+  max-width: 760px;
+  background: var(--cc-surface);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cc-search-form:focus-within {
+  border-color: var(--cc-primary);
+  box-shadow: 0 0 0 4px rgba(133, 39, 251, 0.18);
+}
+
+/* ===== Mobile drawer (Bootstrap offcanvas) ===== */
+.cc-drawer {
+  --bs-offcanvas-width: min(340px, 86vw);
+  --bs-offcanvas-bg: var(--cc-bg-soft);
+  --bs-offcanvas-border-color: var(--cc-border);
+}
+
+/* Brand gradient line on top edge */
+.cc-drawer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--cc-gradient);
+}
+
+.cc-drawer .nav-link {
+  color: var(--cc-text-muted);
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cc-drawer .nav-link:hover {
+  color: #fff;
+  background: var(--cc-surface);
+}
+
+.cc-drawer .nav-link.active {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(133, 39, 251, 0.22), rgba(19, 175, 251, 0.08));
+  box-shadow: inset 3px 0 0 var(--cc-primary);
+}
+
+.cc-drawer .nav-link.active .bi:first-child {
+  color: var(--cc-secondary);
+}
+
+.container {
+  max-width: 1320px;
 }
