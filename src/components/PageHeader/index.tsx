@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { route } from "@/data/routes";
@@ -13,10 +14,18 @@ type Props = {
   breadcrumbs?: Crumb[];
   // Optional background photo (switches banner to dark overlay + white text)
   image?: string;
+  // Extra content under the subtitle (e.g. stats chips)
+  children?: ReactNode;
 };
 
 // Page title banner with breadcrumb (used on inner pages)
-export default function PageHeader({ title, subtitle, breadcrumbs = [], image }: Props) {
+export default function PageHeader({
+  title,
+  subtitle,
+  breadcrumbs = [],
+  image,
+  children,
+}: Props) {
   return (
     <section
       className={`cc-page-header position-relative overflow-hidden py-5 ${
@@ -61,6 +70,7 @@ export default function PageHeader({ title, subtitle, breadcrumbs = [], image }:
         {subtitle && (
           <p className="lead text-body-secondary mb-0 cc-page-header-text">{subtitle}</p>
         )}
+        {children}
       </div>
     </section>
   );

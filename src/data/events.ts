@@ -22,6 +22,7 @@ export const HERO_IMAGE = unsplash("1506157786151-b8491531f063");
 export const PAGE_HEADER_IMAGES = {
   events: unsplash("1470229722913-7c0e2dbbafd3"),
   categories: unsplash("1533174072545-7a4b6ad7a6c3"),
+  trending: unsplash("1514525253161-7a46d19cd819"),
 };
 
 // Side images for auth pages

@@ -78,3 +78,6 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const CITIES = ["Karachi", "Lahore", "Islamabad"];
+
+export const getCategoryBySlug = (slug: string) =>
+  CATEGORIES.find((category) => category.slug === slug);
