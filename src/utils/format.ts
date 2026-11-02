@@ -38,3 +38,13 @@ export const formatCount = (value: number) =>
     notation: "compact",
     maximumFractionDigits: 1,
   }).format(value);
+
+// "Saturday, December 12, 2026"
+export const formatFullDate = (isoDate: string) =>
+  new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(toDate(isoDate));

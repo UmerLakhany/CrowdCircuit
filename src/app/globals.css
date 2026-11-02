@@ -817,3 +817,242 @@ a {
 .cc-page-header-image .breadcrumb-item.active {
   color: #fff;
 }
+
+/* ===== Shared white card ===== */
+.cc-card {
+  background: #fff;
+  border: 1px solid var(--cc-border);
+  border-radius: 20px;
+  box-shadow: var(--cc-shadow-sm);
+}
+
+/* Sticky sidebar below the sticky header */
+.cc-sticky-sidebar {
+  position: sticky;
+  top: calc(var(--cc-header-height) + 1.5rem);
+}
+
+/* ===== Event details: hero ===== */
+.cc-event-hero {
+  min-height: 360px;
+}
+
+@media (min-width: 768px) {
+  .cc-event-hero {
+    min-height: 460px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cc-event-hero {
+    min-height: 540px;
+  }
+}
+
+.cc-event-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15, 18, 38, 0.15) 0%, rgba(15, 18, 38, 0.55) 45%, rgba(15, 18, 38, 0.95) 100%),
+    linear-gradient(135deg, rgba(133, 39, 251, 0.25), rgba(19, 175, 251, 0.1));
+}
+
+.cc-event-hero-title {
+  max-width: 820px;
+}
+
+.cc-event-hero .breadcrumb {
+  --bs-breadcrumb-divider-color: rgba(255, 255, 255, 0.6);
+  flex-wrap: nowrap;
+}
+
+/* Long event titles truncate instead of overflowing */
+.cc-event-hero .breadcrumb-item.active {
+  min-width: 0;
+}
+
+.cc-event-hero .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.cc-event-hero .breadcrumb-item a:hover,
+.cc-event-hero .breadcrumb-item.active {
+  color: #fff;
+}
+
+/* Glass info chips on hero image */
+.cc-hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+/* ===== Event details: info tiles ===== */
+.cc-info-tile {
+  background: var(--cc-bg-soft);
+  border-radius: 14px;
+}
+
+.cc-info-icon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--cc-gradient-soft);
+  color: var(--cc-primary);
+  font-size: 1.1rem;
+}
+
+/* ===== Event details: tickets ===== */
+.cc-ticket-card {
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cc-ticket-card:hover {
+  border-color: rgba(133, 39, 251, 0.35);
+  box-shadow: var(--cc-shadow);
+}
+
+.cc-badge-warning {
+  background: #fff4e5;
+  color: #b45309;
+  font-weight: 500;
+}
+
+.cc-progress {
+  height: 6px;
+  background: var(--cc-bg-soft);
+}
+
+.cc-progress .progress-bar {
+  background: var(--cc-gradient);
+  border-radius: 999px;
+}
+
+/* ===== Event details: venue map ===== */
+.cc-map {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--cc-border);
+}
+
+.cc-map iframe {
+  border: 0;
+}
+
+/* ===== Event details: organizer / policies ===== */
+.cc-avatar {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--cc-gradient);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.cc-alert-soft {
+  background: var(--cc-gradient-soft);
+  border: 1px solid rgba(133, 39, 251, 0.18);
+  color: var(--cc-text);
+  border-radius: 14px;
+}
+
+.cc-alert-soft .bi {
+  color: var(--cc-primary);
+}
+
+/* ===== Event details: booking ===== */
+.cc-booking-card {
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.cc-mobile-booking-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1025;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--cc-border);
+  box-shadow: 0 -8px 24px rgba(15, 18, 38, 0.08);
+}
+
+/* Leave room for the fixed booking bar on mobile / tablet (incl. footer) */
+@media (max-width: 991.98px) {
+  body:has(.cc-has-mobile-bar) {
+    padding-bottom: 76px;
+  }
+}
+
+/* ===== Modal (Bootstrap, React controlled) ===== */
+.cc-modal .modal-content {
+  border: 0;
+  border-radius: 20px;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+@media (max-width: 575.98px) {
+  .cc-modal .modal-content {
+    border-radius: 0;
+  }
+}
+
+.cc-modal .modal-header,
+.cc-modal .modal-footer {
+  padding: 1.25rem 1.5rem;
+}
+
+.cc-modal .modal-body {
+  padding: 1.5rem;
+}
+
+/* Small slide-up when the modal opens */
+.cc-modal .modal-dialog {
+  animation: cc-modal-in 0.25s ease-out;
+}
+
+@keyframes cc-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Ticket modal: quantity stepper ===== */
+.cc-ticket-card.is-selected {
+  border-color: rgba(133, 39, 251, 0.55);
+  background: var(--cc-gradient-soft);
+}
+
+.cc-qty-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cc-qty-value {
+  min-width: 1.75rem;
+}
