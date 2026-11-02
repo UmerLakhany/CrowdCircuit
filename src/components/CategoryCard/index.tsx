@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Category } from "@/data/categories";
+import { route } from "@/data/routes";
 
 type Props = {
   category: Category;
@@ -8,7 +9,7 @@ type Props = {
 export default function CategoryCard({ category }: Props) {
   return (
     <Link
-      href={`/categories/${category.slug}`}
+      href={route.categoryDetails(category.slug)}
       className="cc-category-card d-flex flex-column align-items-start h-100 p-3 p-lg-4 text-reset"
     >
       <span className="cc-category-icon mb-3">

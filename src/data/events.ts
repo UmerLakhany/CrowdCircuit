@@ -19,6 +19,15 @@ const unsplash = (id: string) =>
 
 export const HERO_IMAGE = unsplash("1506157786151-b8491531f063");
 
+// Side images for auth pages
+export const AUTH_IMAGES = {
+  login: unsplash("1501281668745-f7f57925c3b4"),
+  register: unsplash("1429962714451-bb934ecdc4ec"),
+  forgotPassword: unsplash("1514525253161-7a46d19cd819"),
+  resetPassword: unsplash("1459749411175-04bf5292ceea"),
+  verifyEmail: unsplash("1475721027785-f74eccf877e2"),
+};
+
 // Demo data – will come from the API later
 export const EVENTS: EventItem[] = [
   {

@@ -1,5 +1,6 @@
 import EventCard from "@/components/EventCard";
 import SectionHeader from "@/components/SectionHeader";
+import { route } from "@/data/routes";
 import { EVENTS } from "@/data/events";
 
 export default function UpcomingEvents() {
@@ -15,7 +16,7 @@ export default function UpcomingEvents() {
           eyebrow="Coming Soon"
           title="Upcoming Events"
           subtitle="Plan ahead — these events are happening in the coming weeks."
-          action={{ label: "View Calendar", href: "/events?sort=upcoming" }}
+          action={{ label: "View Calendar", href: `${route.events}?sort=upcoming` }}
         />
 
         <div className="row g-3 g-lg-4">

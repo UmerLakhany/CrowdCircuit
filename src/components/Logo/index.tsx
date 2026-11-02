@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { route } from "@/data/routes";
 
 type Props = {
   height?: number;
@@ -14,7 +15,7 @@ const RATIO = 1021 / 244;
 export default function Logo({ height = 48, className = "", onDark = false }: Props) {
   return (
     <Link
-      href="/"
+      href={route.home}
       className={`d-inline-flex align-items-center flex-shrink-0 ${className}`}
       aria-label="CrowdCircuit home"
     >

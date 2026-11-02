@@ -1,5 +1,6 @@
 import CategoryCard from "@/components/CategoryCard";
 import SectionHeader from "@/components/SectionHeader";
+import { route } from "@/data/routes";
 import { CATEGORIES } from "@/data/categories";
 
 export default function BrowseCategories() {
@@ -10,7 +11,7 @@ export default function BrowseCategories() {
           eyebrow="Categories"
           title="Browse by Category"
           subtitle="From live music to tech summits, find events that match your vibe."
-          action={{ label: "All Categories", href: "/categories" }}
+          action={{ label: "All Categories", href: route.categories }}
         />
 
         <div className="row g-3 g-lg-4">

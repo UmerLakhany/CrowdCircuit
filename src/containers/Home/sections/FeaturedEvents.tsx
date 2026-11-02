@@ -1,5 +1,6 @@
 import EventCard from "@/components/EventCard";
 import SectionHeader from "@/components/SectionHeader";
+import { route } from "@/data/routes";
 import { EVENTS } from "@/data/events";
 
 export default function FeaturedEvents() {
@@ -12,7 +13,7 @@ export default function FeaturedEvents() {
           eyebrow="Featured"
           title="Featured Events"
           subtitle="Hand-picked experiences you don't want to miss."
-          action={{ label: "View All Events", href: "/events" }}
+          action={{ label: "View All Events", href: route.events }}
         />
 
         <div className="row g-4">

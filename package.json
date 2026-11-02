@@ -15,7 +15,8 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-hook-form": "^7.91.0",
-    "react-toastify": "^11.2.0"
+    "react-toastify": "^11.2.0",
+    "reactjs-otp-input": "^2.0.11"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

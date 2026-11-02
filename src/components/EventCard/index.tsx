@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { EventItem } from "@/data/events";
+import { route } from "@/data/routes";
 import {
   formatCount,
   formatDate,
@@ -25,7 +26,7 @@ export default function EventCard({
   showAttendees,
 }: Props) {
   const [isFavorite, setIsFavorite] = useState(false);
-  const detailsHref = `/events/${event.slug}`;
+  const detailsHref = route.eventDetails(event.slug);
   const { day, month } = getDayMonth(event.date);
 
   const toggleFavorite = () => {

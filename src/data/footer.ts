@@ -1,4 +1,5 @@
 import { MAIN_NAV_LINKS } from "./navigation";
+import { route } from "./routes";
 
 export type FooterLink = {
   label: string;
@@ -25,25 +26,25 @@ export type ContactItem = {
 export const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Explore",
-    links: MAIN_NAV_LINKS.filter((link) => link.href !== "/").map(
+    links: MAIN_NAV_LINKS.filter((link) => link.href !== route.home).map(
       ({ label, href }) => ({ label, href })
     ),
   },
   {
     title: "Company",
     links: [
-      { label: "About CrowdCircuit", href: "/about" },
-      { label: "Contact Us", href: "/contact" },
-      { label: "Resale Marketplace", href: "/resale" },
+      { label: "About CrowdCircuit", href: route.about },
+      { label: "Contact Us", href: route.contact },
+      { label: "Resale Marketplace", href: route.resale },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "Help Center", href: "/help" },
-      { label: "FAQs", href: "/faq" },
-      { label: "Refund Requests", href: "/support/refunds" },
-      { label: "Submit a Request", href: "/support" },
+      { label: "Help Center", href: route.help },
+      { label: "FAQs", href: route.faq },
+      { label: "Refund Requests", href: route.refunds },
+      { label: "Submit a Request", href: route.support },
     ],
   },
 ];
@@ -69,6 +70,6 @@ export const CONTACT_INFO: ContactItem[] = [
 ];
 
 export const LEGAL_LINKS: FooterLink[] = [
-  { label: "Terms & Conditions", href: "/terms" },
-  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms & Conditions", href: route.terms },
+  { label: "Privacy Policy", href: route.privacy },
 ];

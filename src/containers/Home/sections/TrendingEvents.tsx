@@ -1,5 +1,6 @@
 import EventCard from "@/components/EventCard";
 import SectionHeader from "@/components/SectionHeader";
+import { route } from "@/data/routes";
 import { EVENTS } from "@/data/events";
 
 export default function TrendingEvents() {
@@ -14,7 +15,7 @@ export default function TrendingEvents() {
           eyebrow="Trending"
           title="Trending Events"
           subtitle="The events everyone is talking about right now."
-          action={{ label: "See Trending", href: "/trending" }}
+          action={{ label: "See Trending", href: route.trending }}
         />
 
         <div className="row g-4">
