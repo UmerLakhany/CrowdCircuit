@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="row g-4 gy-5">
           {/* Brand + socials */}
           <div className="col-12 col-lg-4">
-            <Logo height={56} />
+            <Logo height={56} onDark />
             <p className="text-body-secondary small mt-3 mb-4 pe-lg-4">
               Discover concerts, festivals, conferences and live experiences
               happening around you — and secure your tickets in just a few

@@ -4,12 +4,14 @@ import Link from "next/link";
 type Props = {
   height?: number;
   className?: string;
+  // true = white text logo (for dark backgrounds like the footer)
+  onDark?: boolean;
 };
 
-// public/logo.png is 1021x244 (transparent), keep the same ratio
+// Both logo files are 1021x244 (transparent), keep the same ratio
 const RATIO = 1021 / 244;
 
-export default function Logo({ height = 48, className = "" }: Props) {
+export default function Logo({ height = 48, className = "", onDark = false }: Props) {
   return (
     <Link
       href="/"
@@ -18,7 +20,7 @@ export default function Logo({ height = 48, className = "" }: Props) {
     >
       {/* unoptimized: serve the original PNG so it stays sharp and never shows a stale cached copy */}
       <Image
-        src="/logo.png"
+        src={onDark ? "/logo.png" : "/logo-dark.png"}
         alt="CrowdCircuit"
         width={Math.round(height * RATIO)}
         height={height}

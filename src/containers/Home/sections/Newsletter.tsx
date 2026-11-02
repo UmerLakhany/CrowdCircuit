@@ -63,7 +63,7 @@ export default function Newsletter() {
                   />
                 </div>
                 <div className="col-12 col-sm-auto d-grid">
-                  <button type="submit" className="btn btn-gradient px-4 py-2">
+                  <button type="submit" className="btn btn-dark rounded-pill px-4 py-2">
                     Subscribe
                   </button>
                 </div>

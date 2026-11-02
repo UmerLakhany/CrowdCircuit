@@ -1,38 +1,49 @@
-/* ===== CrowdCircuit theme (colors taken from logo) =====
-   Selectors use html[data-bs-theme="dark"] so they always beat
-   Bootstrap's own [data-bs-theme=dark] variables. */
+/* ===== CrowdCircuit theme (light, brand colors taken from logo) =====
+   Selectors use html[data-bs-theme="light"] so they always beat
+   Bootstrap's own [data-bs-theme=light] variables. */
 :root,
-html[data-bs-theme="dark"] {
-  --cc-bg: #01020c;
-  --cc-bg-soft: #070918;
-  --cc-surface: #0e1126;
-  --cc-surface-hover: #151936;
-  --cc-border: rgba(255, 255, 255, 0.08);
+html[data-bs-theme="light"] {
+  --cc-bg: #ffffff;
+  --cc-bg-soft: #f7f6fc;
+  --cc-surface: #ffffff;
+  --cc-border: #e9e6f2;
 
   --cc-primary: #8527fb;
+  --cc-primary-dark: #6a14d9;
   --cc-secondary: #13affb;
   --cc-gradient: linear-gradient(90deg, #8527fb 0%, #13affb 100%);
+  --cc-gradient-soft: linear-gradient(135deg, rgba(133, 39, 251, 0.08) 0%, rgba(19, 175, 251, 0.08) 100%);
 
-  --cc-text: #ffffff;
-  --cc-text-muted: #9ca3c4;
+  --cc-text: #0f1226; /* navy from logo */
+  --cc-text-muted: #5f6480;
+
+  --cc-dark: #0b0d1f; /* footer */
+
+  --cc-shadow-sm: 0 2px 8px rgba(15, 18, 38, 0.06);
+  --cc-shadow: 0 12px 32px rgba(15, 18, 38, 0.08);
+  --cc-shadow-lg: 0 24px 50px rgba(83, 40, 160, 0.14);
 
   --cc-radius: 12px;
   --cc-header-height: 76px;
 
   /* Bootstrap overrides */
   --bs-body-bg: var(--cc-bg);
-  --bs-body-bg-rgb: 1, 2, 12;
+  --bs-body-bg-rgb: 255, 255, 255;
   --bs-body-color: var(--cc-text);
+  --bs-body-color-rgb: 15, 18, 38;
   --bs-body-font-family: var(--font-poppins), system-ui, sans-serif;
+  --bs-emphasis-color: var(--cc-text);
+  --bs-heading-color: var(--cc-text);
   --bs-primary: #8527fb;
   --bs-primary-rgb: 133, 39, 251;
-  --bs-link-color: #13affb;
-  --bs-link-color-rgb: 19, 175, 251;
-  --bs-link-hover-color: #8527fb;
-  --bs-link-hover-color-rgb: 133, 39, 251;
+  --bs-link-color: var(--cc-primary);
+  --bs-link-color-rgb: 133, 39, 251;
+  --bs-link-hover-color: var(--cc-primary-dark);
+  --bs-link-hover-color-rgb: 106, 20, 217;
   --bs-border-color: var(--cc-border);
   --bs-secondary-color: var(--cc-text-muted);
-  --bs-tertiary-bg: var(--cc-surface);
+  --bs-secondary-color-rgb: 95, 100, 128;
+  --bs-tertiary-bg: var(--cc-bg-soft);
 }
 
 html body {
@@ -59,8 +70,19 @@ a {
 }
 
 ::selection {
-  background: rgba(133, 39, 251, 0.45);
-  color: #fff;
+  background: rgba(133, 39, 251, 0.2);
+  color: var(--cc-text);
+}
+
+.container {
+  max-width: 1320px;
+}
+
+/* Brand focus ring for Bootstrap form controls */
+.form-control:focus,
+.form-select:focus {
+  border-color: rgba(133, 39, 251, 0.55);
+  box-shadow: 0 0 0 0.25rem rgba(133, 39, 251, 0.12);
 }
 
 /* ===== Reusable theme helpers ===== */
@@ -81,6 +103,7 @@ a {
   border: none;
   border-radius: 999px;
   font-weight: 500;
+  box-shadow: 0 6px 18px rgba(133, 39, 251, 0.25);
   transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
@@ -89,29 +112,24 @@ a {
   color: #fff;
   opacity: 0.95;
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(133, 39, 251, 0.35);
+  box-shadow: 0 10px 26px rgba(133, 39, 251, 0.35);
 }
 
 .btn-outline-cc {
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #fff;
+  color: var(--cc-text);
+  border: 1px solid var(--cc-border);
   border-radius: 999px;
   font-weight: 500;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
 }
 
 .btn-outline-cc:hover,
-.btn-outline-cc:focus-visible {
-  color: #fff;
-  border-color: var(--cc-primary);
-  background: rgba(133, 39, 251, 0.12);
-}
-
+.btn-outline-cc:focus-visible,
 .btn-outline-cc.active {
-  color: #fff;
-  border-color: var(--cc-primary);
-  background: rgba(133, 39, 251, 0.18);
+  color: var(--cc-primary);
+  border-color: rgba(133, 39, 251, 0.5);
+  background: rgba(133, 39, 251, 0.06);
 }
 
 /* Round icon button: use with "btn btn-outline-cc rounded-circle" */
@@ -128,14 +146,14 @@ a {
 /* ===== Header ===== */
 .cc-header {
   height: var(--cc-header-height);
-  background: var(--cc-bg);
+  background: #fff;
   transition: box-shadow 0.25s, background 0.25s;
 }
 
 .cc-header.is-scrolled {
-  background: rgba(1, 2, 12, 0.92);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(14px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--cc-shadow);
 }
 
 @media (max-width: 575.98px) {
@@ -154,7 +172,7 @@ a {
 .cc-nav-link:hover,
 .cc-nav-link:focus,
 .cc-nav-link.active {
-  color: #fff;
+  color: var(--cc-text);
 }
 
 /* Gradient underline on active link */
@@ -175,9 +193,9 @@ a {
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(1, 2, 12, 0.96);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(14px);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--cc-shadow);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
@@ -192,20 +210,21 @@ a {
 
 .cc-search-form {
   max-width: 760px;
-  background: var(--cc-surface);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--cc-bg-soft);
+  border: 1px solid var(--cc-border);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 .cc-search-form:focus-within {
-  border-color: var(--cc-primary);
-  box-shadow: 0 0 0 4px rgba(133, 39, 251, 0.18);
+  background: #fff;
+  border-color: rgba(133, 39, 251, 0.55);
+  box-shadow: 0 0 0 4px rgba(133, 39, 251, 0.12);
 }
 
 /* ===== Mobile drawer (Bootstrap offcanvas) ===== */
 .cc-drawer {
   --bs-offcanvas-width: min(340px, 86vw);
-  --bs-offcanvas-bg: var(--cc-bg-soft);
+  --bs-offcanvas-bg: #fff;
   --bs-offcanvas-border-color: var(--cc-border);
 }
 
@@ -227,39 +246,34 @@ a {
 }
 
 .cc-drawer .nav-link:hover {
-  color: #fff;
-  background: var(--cc-surface);
+  color: var(--cc-text);
+  background: var(--cc-bg-soft);
 }
 
 .cc-drawer .nav-link.active {
-  color: #fff;
-  background: linear-gradient(90deg, rgba(133, 39, 251, 0.22), rgba(19, 175, 251, 0.08));
+  color: var(--cc-primary);
+  background: var(--cc-gradient-soft);
   box-shadow: inset 3px 0 0 var(--cc-primary);
 }
 
-.cc-drawer .nav-link.active .bi:first-child {
-  color: var(--cc-secondary);
-}
-
-.container {
-  max-width: 1320px;
-}
-/* ===== Footer ===== */
+/* ===== Footer (dark navy block to ground the light page) ===== */
 .cc-footer {
   position: relative;
-  background: var(--cc-bg-soft);
+  background: var(--cc-dark);
+  color: rgba(255, 255, 255, 0.92);
+  --bs-secondary-color: #a3a8c3;
+  --bs-border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Brand gradient line on top edge */
 .cc-footer::before {
   content: "";
   position: absolute;
-  top: -1px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background: var(--cc-gradient);
-  opacity: 0.7;
 }
 
 .cc-footer-title {
@@ -268,12 +282,25 @@ a {
 }
 
 .cc-footer-link {
-  color: var(--cc-text-muted);
+  color: #a3a8c3;
   transition: color 0.2s;
 }
 
 .cc-footer-link:hover,
 .cc-footer-link:focus-visible {
+  color: #fff;
+}
+
+.cc-footer .btn-outline-cc {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.cc-footer .btn-outline-cc:hover,
+.cc-footer .btn-outline-cc:focus-visible {
+  background: var(--cc-gradient);
+  border-color: transparent;
   color: #fff;
 }
 
@@ -298,8 +325,6 @@ a {
 
 .cc-section-alt {
   background: var(--cc-bg-soft);
-  border-top: 1px solid var(--cc-border);
-  border-bottom: 1px solid var(--cc-border);
 }
 
 /* Small gradient label above section titles */
@@ -322,13 +347,20 @@ a {
   overflow: hidden;
 }
 
-/* Frosted glass panel */
-.cc-glass {
-  background: rgba(14, 17, 38, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Elevated white panel (search card, empty states) */
+.cc-panel {
+  background: #fff;
+  border: 1px solid var(--cc-border);
   border-radius: 20px;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--cc-shadow-lg);
+}
+
+/* Soft brand pill (hero tagline) */
+.cc-pill-soft {
+  background: rgba(133, 39, 251, 0.08);
+  border: 1px solid rgba(133, 39, 251, 0.18);
+  color: var(--cc-primary);
+  font-weight: 500;
 }
 
 /* Remove bottom margin from InputField / SelectField wrappers in inline forms */
@@ -337,37 +369,47 @@ a {
   margin-bottom: 0 !important;
 }
 
-/* Dark translucent badge (on images / hero) */
+/* White translucent badge on top of images */
 .cc-badge {
-  background: rgba(1, 2, 12, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
+  color: var(--cc-text);
   font-weight: 500;
-  color: #fff;
+  box-shadow: var(--cc-shadow-sm);
 }
 
 /* ===== Home: hero ===== */
 .cc-hero {
-  display: flex;
-  align-items: center;
-  min-height: min(900px, calc(100svh - var(--cc-header-height)));
-}
-
-.cc-hero-bg {
-  opacity: 0.35;
-}
-
-.cc-hero-overlay {
-  position: absolute;
-  inset: 0;
   background:
-    radial-gradient(circle at 15% 20%, rgba(133, 39, 251, 0.35), transparent 45%),
-    radial-gradient(circle at 85% 30%, rgba(19, 175, 251, 0.25), transparent 45%),
-    linear-gradient(180deg, rgba(1, 2, 12, 0.3) 0%, var(--cc-bg) 100%);
+    radial-gradient(circle at 8% 15%, rgba(133, 39, 251, 0.12), transparent 40%),
+    radial-gradient(circle at 92% 25%, rgba(19, 175, 251, 0.12), transparent 40%),
+    linear-gradient(180deg, #faf9ff 0%, #fff 100%);
 }
 
-.cc-hero-text {
-  max-width: 680px;
+.cc-hero-media {
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+/* Floating info cards on the hero image */
+.cc-hero-float {
+  position: absolute;
+  z-index: 2;
+  background: #fff;
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.cc-hero-float-start {
+  left: -1.5rem;
+  bottom: 2rem;
+}
+
+.cc-hero-float-end {
+  right: -1rem;
+  top: 2rem;
 }
 
 /* ===== Event card ===== */
@@ -377,13 +419,14 @@ a {
   background: var(--cc-surface);
   border: 1px solid var(--cc-border);
   border-radius: 18px;
+  box-shadow: var(--cc-shadow-sm);
   transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 
 .cc-event-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(133, 39, 251, 0.5);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  border-color: rgba(133, 39, 251, 0.35);
+  box-shadow: var(--cc-shadow-lg);
 }
 
 .cc-event-media {
@@ -404,7 +447,7 @@ a {
 }
 
 .cc-card-category {
-  color: var(--cc-secondary);
+  color: var(--cc-primary);
   font-weight: 500;
 }
 
@@ -417,20 +460,22 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(1, 2, 12, 0.55);
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
-  color: #fff;
-  transition: background 0.2s, transform 0.2s;
+  color: var(--cc-text);
+  box-shadow: var(--cc-shadow-sm);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
 .cc-fav-btn:hover {
   transform: scale(1.08);
+  color: var(--cc-primary);
 }
 
 .cc-fav-btn.is-active {
   background: var(--cc-gradient);
-  border-color: transparent;
+  color: #fff;
 }
 
 .cc-date-badge {
@@ -438,9 +483,13 @@ a {
   min-width: 52px;
   padding: 0.45rem 0.6rem;
   border-radius: 12px;
-  background: rgba(1, 2, 12, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(8px);
+  background: #fff;
+  color: var(--cc-text);
+  box-shadow: var(--cc-shadow);
+}
+
+.cc-date-badge .fs-5 {
+  color: var(--cc-primary);
 }
 
 /* ===== Category card ===== */
@@ -449,13 +498,14 @@ a {
   background: var(--cc-surface);
   border: 1px solid var(--cc-border);
   border-radius: 18px;
-  transition: transform 0.25s, border-color 0.25s, background 0.25s;
+  box-shadow: var(--cc-shadow-sm);
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 
 .cc-category-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(133, 39, 251, 0.5);
-  background: linear-gradient(135deg, rgba(133, 39, 251, 0.14), rgba(19, 175, 251, 0.06)), var(--cc-surface);
+  border-color: rgba(133, 39, 251, 0.35);
+  box-shadow: var(--cc-shadow-lg);
 }
 
 .cc-category-icon {
@@ -468,7 +518,7 @@ a {
   background: var(--cc-gradient);
   color: #fff;
   font-size: 1.4rem;
-  box-shadow: 0 10px 24px rgba(133, 39, 251, 0.35);
+  box-shadow: 0 10px 24px rgba(133, 39, 251, 0.25);
 }
 
 .cc-category-arrow {
@@ -480,18 +530,35 @@ a {
 }
 
 .cc-category-card:hover .cc-category-arrow {
-  color: #fff;
+  color: var(--cc-primary);
   transform: translate(2px, -2px);
 }
 
-/* ===== Newsletter ===== */
+/* ===== Newsletter (full brand gradient CTA) ===== */
 .cc-newsletter {
   position: relative;
   overflow: hidden;
   border-radius: 24px;
-  border: 1px solid rgba(133, 39, 251, 0.35);
+  color: #fff;
   background:
-    radial-gradient(circle at 0% 0%, rgba(133, 39, 251, 0.35), transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(19, 175, 251, 0.25), transparent 50%),
-    var(--cc-surface);
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.18), transparent 45%),
+    var(--cc-gradient);
+  box-shadow: 0 24px 50px rgba(133, 39, 251, 0.3);
+}
+
+.cc-newsletter h2 {
+  color: #fff;
+}
+
+.cc-newsletter .text-body-secondary {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.cc-newsletter .cc-category-icon {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+}
+
+.cc-newsletter .invalid-feedback {
+  color: #fff;
 }

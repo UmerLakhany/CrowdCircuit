@@ -45,7 +45,7 @@ export default function EventsNearYou() {
             ))}
           </div>
         ) : (
-          <div className="cc-glass text-center p-5">
+          <div className="cc-panel text-center p-5">
             <i className="bi bi-calendar-x fs-1 text-body-secondary" />
             <p className="text-body-secondary mt-3 mb-0">
               No events in {city} yet. Check back soon!

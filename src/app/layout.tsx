@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-bs-theme="dark" className={poppins.variable}>
+    <html lang="en" data-bs-theme="light" className={poppins.variable}>
       <body className="min-vh-100 d-flex flex-column">
         <Header />
         <main className="flex-grow-1">{children}</main>
