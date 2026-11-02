@@ -1056,3 +1056,111 @@ a {
 .cc-qty-value {
   min-width: 1.75rem;
 }
+
+/* ===== 404 page ===== */
+.cc-not-found {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(133, 39, 251, 0.12), transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(19, 175, 251, 0.12), transparent 40%),
+    linear-gradient(180deg, #faf9ff 0%, #fff 100%);
+}
+
+.cc-404 {
+  font-size: clamp(5rem, 18vw, 10rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Ticket icon in place of the "0" */
+.cc-404-ticket {
+  width: 0.9em;
+  height: 0.9em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--cc-gradient);
+  color: #fff;
+  font-size: 1em;
+  box-shadow: 0 20px 45px rgba(133, 39, 251, 0.35);
+  animation: cc-float 3s ease-in-out infinite;
+}
+
+.cc-404-ticket .bi {
+  font-size: 0.45em;
+  transform: rotate(-15deg);
+}
+
+@keyframes cc-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-404-ticket {
+    animation: none;
+  }
+}
+
+.cc-not-found-text {
+  max-width: 560px;
+}
+
+/* ===== Categories page: image card ===== */
+.cc-category-image-card {
+  border-radius: 20px;
+  box-shadow: var(--cc-shadow-sm);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.cc-category-image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.cc-category-image-card img {
+  transition: transform 0.5s ease;
+}
+
+.cc-category-image-card:hover img {
+  transform: scale(1.06);
+}
+
+/* Dark gradient so white text stays readable on any photo */
+.cc-category-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 18, 38, 0.1) 0%,
+    rgba(15, 18, 38, 0.35) 45%,
+    rgba(15, 18, 38, 0.9) 100%
+  );
+  transition: background 0.25s;
+}
+
+.cc-category-image-card:hover .cc-category-image-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(133, 39, 251, 0.15) 0%,
+    rgba(15, 18, 38, 0.45) 45%,
+    rgba(15, 18, 38, 0.92) 100%
+  );
+}
+
+.cc-category-image-link {
+  color: #7fd3ff;
+}
+
+.cc-category-image-link .bi {
+  transition: transform 0.2s;
+}
+
+.cc-category-image-card:hover .cc-category-image-link .bi {
+  transform: translateX(4px);
+}

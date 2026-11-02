@@ -1,3 +1,5 @@
+import { unsplash } from "@/utils/images";
+
 export type EventItem = {
   id: number;
   slug: string;
@@ -14,14 +16,12 @@ export type EventItem = {
   trending?: boolean;
 };
 
-const unsplash = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
-
 export const HERO_IMAGE = unsplash("1506157786151-b8491531f063");
 
 // Background images for inner page banners
 export const PAGE_HEADER_IMAGES = {
   events: unsplash("1470229722913-7c0e2dbbafd3"),
+  categories: unsplash("1533174072545-7a4b6ad7a6c3"),
 };
 
 // Side images for auth pages
