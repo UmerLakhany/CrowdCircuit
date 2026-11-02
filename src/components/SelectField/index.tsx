@@ -134,11 +134,11 @@ export default function SelectField({
             setShowDropdown(true);
             handleSearch(e.target.value);
           }}
-          style={{ minWidth: "100px" }}
+          style={{ minWidth: "100px", paddingRight: "2.5rem" }}
         />
 
  <span
-    className="position-absolute top-50 end-0 translate-middle-y pe-3"
+    className="position-absolute top-50 end-0 translate-middle-y pe-3 text-secondary"
     style={{ cursor: "pointer", zIndex: 5 }}
     onClick={() => setShowDropdown((prev) => !prev)}
   >

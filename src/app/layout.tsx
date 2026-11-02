@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
+import BootstrapJs from "@/components/bootstrap-js/bootstrapjs";
+import { ToasterContainer } from "@/components/Toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +27,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <ToasterContainer />
+        <BootstrapJs />
+      </body>
     </html>
   );
 }
