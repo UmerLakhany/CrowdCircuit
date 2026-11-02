@@ -6,21 +6,23 @@ import SectionHeader from "@/components/SectionHeader";
 import { CITIES } from "@/data/categories";
 import { EVENTS } from "@/data/events";
 
+// TODO: UI only for now – city buttons don't filter yet (connect to API / user location later)
+const NEARBY_EVENTS = EVENTS.slice(4, 8);
+
 export default function EventsNearYou() {
-  // TODO: default to the customer's saved / detected location
+  // Local UI state only, so the selected city button is highlighted
   const [city, setCity] = useState(CITIES[0]);
-  const nearby = EVENTS.filter((event) => event.city === city).slice(0, 4);
 
   return (
     <section className="cc-section">
       <div className="container">
         <SectionHeader
           eyebrow="Near You"
-          title={`Events in ${city}`}
+          title="Events Near You"
           subtitle="Pick a city to see what's happening around you."
         />
 
-        {/* City filter */}
+        {/* City selector */}
         <div className="d-flex flex-wrap gap-2 mb-4" role="group" aria-label="Choose city">
           {CITIES.map((item) => (
             <button
@@ -36,22 +38,13 @@ export default function EventsNearYou() {
           ))}
         </div>
 
-        {nearby.length > 0 ? (
-          <div className="row g-4">
-            {nearby.map((event) => (
-              <div className="col-12 col-sm-6 col-lg-3" key={event.id}>
-                <EventCard event={event} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="cc-panel text-center p-5">
-            <i className="bi bi-calendar-x fs-1 text-body-secondary" />
-            <p className="text-body-secondary mt-3 mb-0">
-              No events in {city} yet. Check back soon!
-            </p>
-          </div>
-        )}
+        <div className="row g-4">
+          {NEARBY_EVENTS.map((event) => (
+            <div className="col-12 col-sm-6 col-lg-3" key={event.id}>
+              <EventCard event={event} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

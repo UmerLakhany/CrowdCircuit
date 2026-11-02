@@ -19,6 +19,11 @@ const unsplash = (id: string) =>
 
 export const HERO_IMAGE = unsplash("1506157786151-b8491531f063");
 
+// Background images for inner page banners
+export const PAGE_HEADER_IMAGES = {
+  events: unsplash("1470229722913-7c0e2dbbafd3"),
+};
+
 // Side images for auth pages
 export const AUTH_IMAGES = {
   login: unsplash("1501281668745-f7f57925c3b4"),

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { SubmitEvent, useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import InputField from "@/components/Input";
@@ -27,17 +27,12 @@ export default function HeroSection() {
 
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm<SearchValues>({ defaultValues: { keyword: "" } });
 
-  const onSubmit = (data: SearchValues) => {
-    // TODO: navigate to /events with these filters
-    console.log("Hero search:", {
-      keyword: data.keyword.trim(),
-      location: location?.name ?? null,
-      category: category?.id ?? null,
-    });
+  // TODO: UI only for now – navigate to /events with these filters later
+  const onSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
   };
 
   return (
@@ -111,7 +106,7 @@ export default function HeroSection() {
           <div className="col-12">
             <form
               className="cc-panel cc-field-flush p-3 p-md-4"
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={onSubmit}
               role="search"
             >
               <div className="row g-3 align-items-start">

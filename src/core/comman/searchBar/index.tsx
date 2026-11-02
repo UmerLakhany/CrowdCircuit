@@ -1,6 +1,6 @@
 "use client";
 
-import { SubmitEvent, useEffect, useRef, useState } from "react";
+import { SubmitEvent, useEffect, useRef } from "react";
 
 type Props = {
   open: boolean;
@@ -8,7 +8,6 @@ type Props = {
 };
 
 export default function SearchBar({ open, onClose }: Props) {
-  const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Focus input when opened, close on Escape
@@ -25,10 +24,8 @@ export default function SearchBar({ open, onClose }: Props) {
   }, [open, onClose]);
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    // TODO: UI only for now – connect to search API / results page later
     e.preventDefault();
-    if (!query.trim()) return;
-    // TODO: connect to search API / results page
-    console.log("Search:", query.trim());
   };
 
   return (
@@ -48,8 +45,6 @@ export default function SearchBar({ open, onClose }: Props) {
             type="search"
             className="form-control border-0 bg-transparent shadow-none"
             placeholder="Search events, categories or cities..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
             aria-label="Search events"
           />
           <button type="submit" className="btn btn-gradient px-4">
