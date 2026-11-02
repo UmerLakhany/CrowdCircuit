@@ -1,8 +1,21 @@
+import HeroSection from "./sections/HeroSection";
+import FeaturedEvents from "./sections/FeaturedEvents";
+import BrowseCategories from "./sections/BrowseCategories";
+import TrendingEvents from "./sections/TrendingEvents";
+import UpcomingEvents from "./sections/UpcomingEvents";
+import EventsNearYou from "./sections/EventsNearYou";
+import Newsletter from "./sections/Newsletter";
+
 export default function HomePage() {
   return (
-    <div className="container py-5">
-      <h3 className="mb-4">Home</h3>
-      <p>Welcome to the Home page!</p>
-    </div>
+    <>
+      <HeroSection />
+      <FeaturedEvents />
+      <BrowseCategories />
+      <TrendingEvents />
+      <UpcomingEvents />
+      <EventsNearYou />
+      <Newsletter />
+    </>
   );
 }

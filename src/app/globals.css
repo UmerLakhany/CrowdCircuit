@@ -284,3 +284,214 @@ a {
     height: 40px;
   }
 }
+
+/* ===== Sections (shared) ===== */
+.cc-section {
+  padding: 4rem 0;
+}
+
+@media (min-width: 992px) {
+  .cc-section {
+    padding: 5.5rem 0;
+  }
+}
+
+.cc-section-alt {
+  background: var(--cc-bg-soft);
+  border-top: 1px solid var(--cc-border);
+  border-bottom: 1px solid var(--cc-border);
+}
+
+/* Small gradient label above section titles */
+.cc-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--cc-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cc-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Frosted glass panel */
+.cc-glass {
+  background: rgba(14, 17, 38, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* Remove bottom margin from InputField / SelectField wrappers in inline forms */
+.cc-field-flush .mb-3,
+.cc-field-flush .mb-2 {
+  margin-bottom: 0 !important;
+}
+
+/* Dark translucent badge (on images / hero) */
+.cc-badge {
+  background: rgba(1, 2, 12, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  font-weight: 500;
+  color: #fff;
+}
+
+/* ===== Home: hero ===== */
+.cc-hero {
+  display: flex;
+  align-items: center;
+  min-height: min(900px, calc(100svh - var(--cc-header-height)));
+}
+
+.cc-hero-bg {
+  opacity: 0.35;
+}
+
+.cc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(133, 39, 251, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(19, 175, 251, 0.25), transparent 45%),
+    linear-gradient(180deg, rgba(1, 2, 12, 0.3) 0%, var(--cc-bg) 100%);
+}
+
+.cc-hero-text {
+  max-width: 680px;
+}
+
+/* ===== Event card ===== */
+.cc-event-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 18px;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.cc-event-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(133, 39, 251, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.cc-event-media {
+  overflow: hidden;
+}
+
+.cc-event-media img {
+  transition: transform 0.5s ease;
+}
+
+.cc-event-card:hover .cc-event-media img {
+  transform: scale(1.06);
+}
+
+/* Image column height for horizontal (list) cards */
+.cc-event-card .row > .cc-event-media {
+  min-height: 170px;
+}
+
+.cc-card-category {
+  color: var(--cc-secondary);
+  font-weight: 500;
+}
+
+.cc-fav-btn {
+  position: relative;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(1, 2, 12, 0.55);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cc-fav-btn:hover {
+  transform: scale(1.08);
+}
+
+.cc-fav-btn.is-active {
+  background: var(--cc-gradient);
+  border-color: transparent;
+}
+
+.cc-date-badge {
+  z-index: 1;
+  min-width: 52px;
+  padding: 0.45rem 0.6rem;
+  border-radius: 12px;
+  background: rgba(1, 2, 12, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+/* ===== Category card ===== */
+.cc-category-card {
+  position: relative;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 18px;
+  transition: transform 0.25s, border-color 0.25s, background 0.25s;
+}
+
+.cc-category-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(133, 39, 251, 0.5);
+  background: linear-gradient(135deg, rgba(133, 39, 251, 0.14), rgba(19, 175, 251, 0.06)), var(--cc-surface);
+}
+
+.cc-category-icon {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: var(--cc-gradient);
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 10px 24px rgba(133, 39, 251, 0.35);
+}
+
+.cc-category-arrow {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  color: var(--cc-text-muted);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.cc-category-card:hover .cc-category-arrow {
+  color: #fff;
+  transform: translate(2px, -2px);
+}
+
+/* ===== Newsletter ===== */
+.cc-newsletter {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(133, 39, 251, 0.35);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(133, 39, 251, 0.35), transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(19, 175, 251, 0.25), transparent 50%),
+    var(--cc-surface);
+}
